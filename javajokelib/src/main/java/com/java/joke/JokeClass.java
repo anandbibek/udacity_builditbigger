@@ -40,7 +40,6 @@ public class JokeClass {
             "If Ruby is not and Perl is the answer, you don't understand the question.\n" +
             "The more I C, the less I see.\n" +
             "COBOL programmers understand why women hate periods.\n" +
-            "Michael Sinz: \"Programming is like sex, one mistake and you have to support it for the rest of your life.\"\n" +
             "If you give someone a program, you will frustrate them for a day; if you teach them how to program, you will frustrate them for a lifetime.\n" +
             "Programmers are tools for converting caffeine into code.\n" +
             "My attitude isn't bad. It's in beta.\n" +
@@ -53,8 +52,6 @@ public class JokeClass {
             "SUPERCOMPUTER: what it sounded like before you bought it.\n" +
             "Evolution is God's way of issuing upgrades.\n" +
             "Linus Torvalds: \"Real men don't use backups, they post their stuff on a public ftp server and let the rest of the world make copies.\"\n" +
-            "Hacking is like sex. You get in, you get out, and hope that you didn't leave something that can be traced back to you.\n" +
-            "Calculations\n" +
             "There are three kinds of people: those who can count and those who can't.\n" +
             "Latest survey shows that 3 out of 4 people make up 75% of the world's population.\n" +
             "Hand over the calculator, friends don't let friends derive drunk.\n" +
