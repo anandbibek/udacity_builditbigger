@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        applicationId "com.anandbibek.builditbigger"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        free {
+            applicationId "com.anandbibek.builditbigger.free"
+        }
+        paid {
+            applicationId "com.anandbibek.builditbigger.paid"
+        }
+    }
+    sourceSets { main { java.srcDirs = ['src/main/java', 'src/test/java/'] } }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+
+    compile project(path: ':javajokelib')
+    compile project(path: ':android_jokeLib')
+
+    // Added for AdMob
+    freeCompile 'com.google.firebase:firebase-ads:9.6.1'
+
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
+    compile project(path: ':gc_backend', configuration: 'android-endpoints')
+
+    // Required for local unit tests (JUnit 4 framework)
+    testCompile 'junit:junit:4.12'
+
+}
