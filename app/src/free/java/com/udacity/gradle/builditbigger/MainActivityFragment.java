@@ -22,8 +22,9 @@ public class MainActivityFragment extends Fragment {
 
     InterstitialAd mInterstitialAd;
     Button button;
-    String joke;
+    String joke = "";
     ProgressBar progressBar;
+    boolean adLoaded = false, dataLoading = false;
 
     public MainActivityFragment() {
     }
@@ -40,14 +41,15 @@ public class MainActivityFragment extends Fragment {
                 //if ad is loaded move to next screen when ad is cancelled
                 //if ad is not loaded, move to next screen immediately
                 progressBar.setVisibility(View.VISIBLE);
-                final boolean adLoaded = mInterstitialAd.isLoaded();
-                if (adLoaded)
+                if (adLoaded = mInterstitialAd.isLoaded())
                     mInterstitialAd.show();
+                dataLoading = true;
                 new EndpointsAsyncTask(){
                     @Override
                     protected void onPostExecute(String result) {
                         progressBar.setVisibility(View.GONE);
                         joke = result;
+                        dataLoading = false;
                         if(!adLoaded)
                             ((OnJokeReceivedListener)getActivity()).onReceived(joke);
                     }
@@ -60,7 +62,13 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onAdClosed() {
                 requestNewInterstitial();
-                ((OnJokeReceivedListener)getActivity()).onReceived(joke);
+                //don't move to next page if nothing is loaded when ad is dismissed
+                if(!dataLoading) {
+                    ((OnJokeReceivedListener) getActivity()).onReceived(joke);
+                    //If we did not move to next page if data was not loaded
+                    //we have to make sure we move when data is loaded
+                    adLoaded = false;
+                }
             }
         });
         requestNewInterstitial();
