@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+def flavor
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -22,9 +24,11 @@ android {
     productFlavors {
         free {
             applicationId "com.anandbibek.builditbigger.free"
+            flavor = "free"
         }
         paid {
             applicationId "com.anandbibek.builditbigger.paid"
+            flavor = "paid"
         }
     }
     sourceSets { main { java.srcDirs = ['src/main/java', 'src/test/java/'] } }
@@ -47,4 +51,7 @@ dependencies {
     // Required for local unit tests (JUnit 4 framework)
     testCompile 'junit:junit:4.12'
 
+}
+if(flavor == "free") {
+    apply plugin: 'com.google.gms.google-services'
 }
