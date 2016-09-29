@@ -7,6 +7,10 @@ import java.util.concurrent.TimeUnit;
 
 public class GetJokeAsyncTaskTest extends AndroidTestCase {
 
+    public GetJokeAsyncTaskTest(){
+
+    }
+
     public void testJokeDownload() {
 
         try {
